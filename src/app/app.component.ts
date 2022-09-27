@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
   forbiddenUserNames = ['Chris', 'Anna'];
+  errorMessage = '';
 
   ngOnInit() {
     this.signupForm = new FormGroup({

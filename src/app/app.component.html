@@ -14,7 +14,27 @@
             <span
               *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
               class='help-block'
-            >Enter you name
+            ><span
+              class='help-block'
+              *ngIf="signupForm
+              .get('userData.username')
+              .errors['nameIsForbidden']">
+              This name is Invalid!
+            </span>
+              <span
+                class='help-block'
+                *ngIf="signupForm
+              .get('userData.username')
+              .errors['minlength']['actualLength'] < 3">
+              Username length should be more then 3 characters
+            </span>
+              <span
+                class='help-block'
+                *ngIf="signupForm
+              .get('userData.username')
+              .errors['required']">
+              This field is required!
+            </span>
           </span>
           </div>
           <div class="form-group">
