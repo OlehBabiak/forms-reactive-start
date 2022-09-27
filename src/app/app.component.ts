@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
   forbiddenUserNames = ['Chris', 'Anna'];
-  errorMessage = '';
+
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -21,6 +22,12 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+    // this.signupForm.valueChanges.subscribe(
+    //   value => console.log(value)
+    // );
+    this.signupForm.statusChanges.subscribe(
+      value => console.log(value)
+    );
   }
 
   onSubmit() {
